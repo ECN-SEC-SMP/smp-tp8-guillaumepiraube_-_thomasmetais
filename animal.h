@@ -1,10 +1,12 @@
+#pragma once
 //
 // Created by pirau on 09/03/2026.
 //
 #include <string>
-#include "Attaque.h"
+#include "attaque.h"
 
-class Animal {
+class Animal
+{
 protected:
     std::string nom;
     int x;
@@ -22,6 +24,7 @@ public:
     Attaque getAttaque() const;
     void setVivant(bool v);
     bool attaque(Animal &a);
-    virtual void setAttaque(Attaque atq) = 0;
-    void deplace(int maxX);
+    virtual void setAttaque() = 0;                // virtuel pure
+    virtual void deplace(int maxX, int maxY) = 0; // virtuel pure
+    virtual ~Animal();
 };
