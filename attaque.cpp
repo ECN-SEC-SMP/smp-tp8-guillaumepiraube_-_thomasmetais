@@ -17,7 +17,18 @@ int Attaque::getTypeAttaque() const
 
 bool Attaque::resoudreAttaque(const Attaque &a) const
 {
-    if ((this->type == 0 && a.getTypeAttaque() == 2) || (this->type == 1 && a.getTypeAttaque() == 0) || (this->type == 2 && a.getTypeAttaque() == 1))
+    if (this->type == a.getTypeAttaque())
+    {
+        if (rand() % 2 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if ((this->type == 0 && a.getTypeAttaque() == 2) || (this->type == 1 && a.getTypeAttaque() == 0) || (this->type == 2 && a.getTypeAttaque() == 1))
     {
         return true;
     }

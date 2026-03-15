@@ -23,29 +23,19 @@ void Lion::setAttaque()
 void Lion::deplace(int maxX, int maxY)
 {
   int dir = rand() % 4;
-  this->x += MATRICE_LION[dir][0];
-  this->y += MATRICE_LION[dir][1];
-
-  if (this->x < 0)
-    this->x = maxX;
-  else if (this->x > maxX)
-    this->x = 0;
-
-  if (this->y < 0)
-    this->y = maxY;
-  else if (this->y > maxY)
-    this->y = 0;
+  this->x = ((this->x + MATRICE_LION[dir][0]) % maxX + maxX) % maxX;
+  this->y = ((this->y + MATRICE_LION[dir][1]) % maxY + maxY) % maxY;
 }
 
 // Ours
 Ours::Ours(int maxX, int maxY) : Animal(maxX, maxY)
 {
-  this->nom = "Ours";
+  this->nom = "Bear";
   setAttaque();
 }
 Ours::Ours(int maxX, int maxY, int a, int b) : Animal(maxX, maxY, a, b)
 {
-  this->nom = "Ours";
+  this->nom = "Bear";
   setAttaque();
 }
 
@@ -57,29 +47,19 @@ void Ours::setAttaque()
 void Ours::deplace(int maxX, int maxY)
 {
   int dir = rand() % 8;
-  this->x += MATRICE_OURS[dir][0];
-  this->y += MATRICE_OURS[dir][1];
-
-  if (this->x < 0)
-    this->x = maxX - (abs(this->x) - 1);
-  else if (this->x > maxX)
-    this->x = 0 + (abs(this->x) - 1);
-
-  if (this->y < 0)
-    this->y = maxY - (abs(this->x) - 1);
-  else if (this->y > maxY)
-    this->y = 0 + (abs(this->x) - 1);
+  this->x = ((this->x + MATRICE_OURS[dir][0]) % maxX + maxX) % maxX;
+  this->y = ((this->y + MATRICE_OURS[dir][1]) % maxY + maxY) % maxY;
 }
 
 // Pierre
 Pierre::Pierre(int maxX, int maxY) : Animal(maxX, maxY)
 {
-  this->nom = "Pierre";
+  this->nom = "Stone";
   setAttaque();
 }
 Pierre::Pierre(int maxX, int maxY, int a, int b) : Animal(maxX, maxY, a, b)
 {
-  this->nom = "Pierre";
+  this->nom = "Stone";
   setAttaque();
 }
 
@@ -96,12 +76,12 @@ void Pierre::deplace(int maxX, int maxY)
 // Loup
 Loup::Loup(int maxX, int maxY) : Animal(maxX, maxY)
 {
-  this->nom = "Loup";
+  this->nom = "Wolf";
   setAttaque();
 }
 Loup::Loup(int maxX, int maxY, int a, int b) : Animal(maxX, maxY, a, b)
 {
-  this->nom = "Loup";
+  this->nom = "Wolf";
   setAttaque();
 }
 
@@ -112,6 +92,6 @@ void Loup::setAttaque()
 
 void Loup::deplace(int maxX, int maxY)
 {
-  this->x += (rand() % (maxX + 1)); // Le loup peut se déplacer de 0 à maxX en x
-  this->y += (rand() % (maxY + 1)); // Le loup peut se déplacer de 0 à maxY en y
+  this->x = (rand() % (maxX)); //  le loup peut se déplacer de 0 à maxX en x
+  this->y = (rand() % (maxY)); //  le loup peut se déplacer de 0 à maxY en y
 }
